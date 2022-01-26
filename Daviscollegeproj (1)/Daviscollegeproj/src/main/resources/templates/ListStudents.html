@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>List of students</title>
+</head>
+<body>
+<div class="container-fluid">
+
+    <table class="table table-striped table-hover table-bordered text-center">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Student</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stu:${studentsList}">
+            <td th:text="${stu.stuId}"></td>
+            <td th:text="${stu.stuName}"></td>
+            <td th:text="${stu.stuAge}"></td>
+            <td th:text="${stu.course.getCoName()}"></td>
+            <td>
+                <a class="btn btn-danger btn-sm text-right"th:href="@{'/delete/'+${stu.stuId}}">Delete</a>
+                <a class="btn btn-success btn-sm text-right" th:href="@{'/edit/'+${stu.stuId}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
